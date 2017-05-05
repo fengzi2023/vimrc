@@ -22,17 +22,17 @@ if [ -e "$VIMRC_HOME" ]; then
 fi
 
 # GIT CLONE
-sprintf "start git clone.[%s] [%s]\n" $VIMRC_GIT_URL $VIMRC_HOME
+printf "start git clone.[%s] [%s]\n" $VIMRC_GIT_URL $VIMRC_HOME
 git clone $VIMRC_GIT_URL $VIMRC_HOME
 cd $VIMRC_HOME
 git submodule update --init --recursive
 
 ln -sf $VIMRC_HOME/vimrc.vundle $HOME/.vimrc
 
-sprintf "start initalize vundle.\n"
+printf "start initalize vundle.\n"
 vim "+set nomore" "+PluginInstall" "+PluginClean" "+qall" 2>/dev/null
 
-sprintf "start install vimrc.\n"
+printf "start install vimrc.\n"
 ln -sf $VIMRC_HOME/vimrc $HOME/.vimrc
 
-sprintf "install success,enjoy :)\n"
+printf "install success,enjoy :)\n"

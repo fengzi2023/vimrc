@@ -14,11 +14,11 @@ fi
 # 先执行备份
 if [ -e "$VIMRC" ]; then
     today=`date +%Y%m%d_%s`
-    mv -v -u "$VIMRC" "$VIMRC.$today"
+    mv -v "$VIMRC" "$VIMRC.$today"
 fi
 if [ -e "$VIMRC_HOME" ]; then
     today=`date +%Y%m%d_%s`
-    mv -v -u "$VIMRC_HOME" "$VIMRC_HOME.$today"
+    mv -v "$VIMRC_HOME" "$VIMRC_HOME.$today"
 fi
 
 # GIT CLONE

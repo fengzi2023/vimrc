@@ -25,11 +25,14 @@ set fileencoding=utf-8
 set autoindent
 " set cindent
 
-" Tab键的宽度
-set tabstop=4
+" 把tabstop,shiftwidth设置成同一个值，加上expandtab，这样就会只用space，而不用tab了，这样不管tabstop怎么变样式也不会花了。
+" 设置tab键转化成空格模式
 set expandtab
-" 统一缩进为4
+" Tab键显示宽度
+set tabstop=4
+" Tab键在编辑时的宽度 
 set softtabstop=4
+" 自动缩进的空格数 
 set shiftwidth=4
 
 " }}}

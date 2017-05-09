@@ -53,7 +53,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " CtrlP 搜索忽略文件
 let g:ctrlp_custom_ignore = {  
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',  
+  \ 'dir':  '\v[\/]\.(git|hg|svn|output)$',  
   \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
   \ 'link': 'some_bad_symbolic_links',  
   \ }

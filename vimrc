@@ -89,10 +89,14 @@ let g:rehash256 = 1
 " colorscheme solarized
 " let g:airline_theme='molokai'
 let g:airline_theme='base16_bright'
+set laststatus=2
 " let g:solarized_termcolors=256
 
 " 语法检查
 syntax on
+
+" 显示行号
+set nu
 
 " CtrlP
 

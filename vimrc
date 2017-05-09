@@ -83,10 +83,11 @@ let g:NERDSpaceDelims = 1
 " 主题设置
 set background=dark
 colorscheme molokai 
-let g:molokai_original = 1
+" let g:molokai_original = 1
 let g:rehash256 = 1
+
 " colorscheme solarized
-" let g:airline_theme='solarized'
+let g:airline_theme='molokai'
 " let g:solarized_termcolors=256
 
 " 语法检查

@@ -87,7 +87,8 @@ colorscheme molokai
 let g:rehash256 = 1
 
 " colorscheme solarized
-let g:airline_theme='molokai'
+" let g:airline_theme='molokai'
+let g:airline_theme='base16_bright'
 " let g:solarized_termcolors=256
 
 " 语法检查

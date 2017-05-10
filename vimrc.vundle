@@ -38,11 +38,17 @@ Plugin 'vim-airline/vim-airline-themes'
 " 好用的文件查找插件
 Plugin 'ctrlpvim/ctrlp.vim'
 " 好看的主题
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 " 查看文件列表插件
 Plugin 'scrooloose/nerdtree'
-
+" 自动补全
+Plugin 'Shougo/neocomplete.vim'
+" tab键
+" Plugin 'ervandew/supertab'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'honza/vim-snippets'
+" 语法检查
 " ----------- php 相关 -------------------
 "  php 自动补全
 " Plugin 'shawncplus/phpcomplete.vim'

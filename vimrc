@@ -201,6 +201,27 @@ endif
 
 " Tell Neosnippet about the other snippets
 " let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+"
+" 语法检查
+" let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_checkers = ['php']
+" let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+nnoremap <leader>ln :lne<CR>
+nnoremap <leader>lp :lp<CR>
+
+" Don't run messdetector on save (default = 1)
+" let g:phpqa_messdetector_autorun = 0
+
+" Don't run codesniffer on save (default = 1)
+" let g:phpqa_codesniffer_autorun = 0
+" let g:phpqa_codesniffer_args = "--standard=PSR2"
+
+" Show code coverage on load (default = 0)
+" let g:phpqa_codecoverage_autorun = 0
 "}}}
 
 " custom map settings ---------------------- {{{

@@ -50,10 +50,9 @@ Plugin 'Shougo/neosnippet.vim'
 " Plugin 'honza/vim-snippets'
 Plugin 'Shougo/neosnippet-snippets' 
 " 语法检查
-" ----------- php 相关 -------------------
-"  php 自动补全
-" Plugin 'shawncplus/phpcomplete.vim'
-"---------------------------------------
+Plugin 'vim-syntastic/syntastic'
+" php代码
+" Plugin 'joonty/vim-phpqa'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须

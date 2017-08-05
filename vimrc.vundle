@@ -43,16 +43,19 @@ Plugin 'tomasr/molokai'
 " 查看文件列表插件
 Plugin 'scrooloose/nerdtree'
 " 自动补全
-Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplete.vim'
 " tab键
 " Plugin 'ervandew/supertab'
 Plugin 'Shougo/neosnippet.vim'
-" Plugin 'honza/vim-snippets'
 Plugin 'Shougo/neosnippet-snippets' 
 " 语法检查
 Plugin 'vim-syntastic/syntastic'
 " php代码
 " Plugin 'joonty/vim-phpqa'
+
+" go 配置
+Plugin 'fatih/vim-go'
+Plugin 'Valloric/YouCompleteMe'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须

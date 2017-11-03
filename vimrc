@@ -3,7 +3,7 @@
 set nocompatible
 
 " 设置leader按键
-let mapleader = "-"
+let mapleader = ";"
 let localmapleader = "\\"
 
 " 设置搜索模式
@@ -199,11 +199,11 @@ let g:acp_enableAtStartup = 0
 
 " 语法检查
 " let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_checkers = ['php']
+"let g:syntastic_php_checkers = ['php']
 " let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
@@ -220,6 +220,14 @@ nnoremap <leader>lp :lp<CR>
 
 " go 语言配置
 let g:go_disable_autoinstall = 0
+
+" for ycm
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmDiags<CR>
 
 "}}}
 
@@ -258,9 +266,9 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
 
 " 解放左手
-inoremap jk <esc>
+" inoremap jk <esc>
 " 修改<esc>按键无效
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 " 修改方向键无效 TODO
 " noremap 
 
@@ -299,7 +307,8 @@ noremap > <C-W>>
 noremap < <C-W><
 
 " Loop to switch windows
-nnoremap <S-w> :wincmd w<CR>
+nnoremap <S-q> :wincmd w<CR>
+nnoremap <S-e> :wincmd W<CR>
 
 " new tab
 noremap <C-t><C-t> :tabnew .<CR>

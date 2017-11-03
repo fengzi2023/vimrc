@@ -49,7 +49,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets' 
 " 语法检查
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 " php代码
 " Plugin 'joonty/vim-phpqa'
 

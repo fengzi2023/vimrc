@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # vimrc安装脚本
 
-[ -z "$VIMRC_GIT_URL"] && VIMRC_GIT_URL='git@github.com:fengyuwei01/vimrc.git'
+[ -z "$VIMRC_GIT_URL"] && VIMRC_GIT_URL='https://github.com/fengzi01/vimrc.git'
 
 if [ -z "$HOME" ]; then
     printf "You must have your HOME environmental variable set to continue.\n" >&2
@@ -34,5 +34,7 @@ vim "+set nomore" "+PluginInstall" "+PluginClean" "+qall" 2>/dev/null
 
 printf "start install vimrc.\n"
 ln -sf $VIMRC_HOME/vimrc $HOME/.vimrc
+
+# TODO 编译ycm插件
 
 printf "install success,enjoy :)\n"

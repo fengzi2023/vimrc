@@ -197,3 +197,4 @@ noremap <C-t><C-w> :tabclose<CR>
 " noremap <leader>cn :cnext<cr>
 " }}}
 
+" vim: set ts=4 sw=4 tw=78 et :

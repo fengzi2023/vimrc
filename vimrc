@@ -41,10 +41,17 @@ set shiftwidth=4
 source ~/.vim/vimrc.vundle
 "}}}
 
-" vundle map settings ---------------------- {{{
+" custome function settings -----------------------{{{
+if filereadable("~/.vim/vim.custom") 
+    source ~/.vim/vimrc.custom
+endif
+"}}}
+
+" vundle plugin settings ---------------------- {{{
 
 " scrooloose/nerdtree
-nnoremap <leader>t :NERDTree<cr>
+" 树快捷键
+nnoremap <leader>t :NERDTreeToggle<cr>
 
 " CtrlP
 " Default setting
@@ -58,165 +65,25 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',  
   \ }
 
-" scrooloose/nerdcommenter
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-" let g:NERDCompactSexyComs = 1
-" 
-" Align line-wise comment delimiters flush left instead of following code indentation
-" let g:NERDDefaultAlign = 'left'
-"
-" Set a language to use its alternate delimiters by default
-" let g:NERDAltDelims_java = 1
-"
-" Add your own custom formats or override the defaults
-" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-"
-" Allow commenting and inverting empty lines (useful when commenting a region)
-" let g:NERDCommentEmptyLines = 1
-"
-" Enable trimming of trailing whitespace when uncommenting
-" let g:NERDTrimTrailingWhitespace = 1
-
 " 主题设置
+" colorscheme solarized
+" let g:solarized_termcolors=256
+
 set background=dark
 colorscheme molokai 
 " let g:molokai_original = 1
 let g:rehash256 = 1
 
-" colorscheme solarized
 " let g:airline_theme='molokai'
 let g:airline_theme='base16_bright'
+
+" 显示状态栏
 set laststatus=2
-" let g:solarized_termcolors=256
 
 " 语法检查
 syntax on
-
 " 显示行号
 set nu
-
-" CtrlP
-"
-" neocomplete自动补全
-"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-" let g:neocomplete#enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplete#enable_smart_case = 1
-" " Set minimum syntax keyword length.
-" let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" " Define dictionary.
-" let g:neocomplete#sources#dictionary#dictionaries = {
-"     \ 'default' : '',
-"     \ 'vimshell' : $HOME.'/.vimshell_hist',
-"     \ 'scheme' : $HOME.'/.gosh_completions'
-"         \ }
-
-" " Define keyword.
-" if !exists('g:neocomplete#keyword_patterns')
-"     let g:neocomplete#keyword_patterns = {}
-" endif
-" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" " Plugin key-mappings.
-" inoremap <expr><C-g>     neocomplete#undo_completion()
-" inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" " Recommended key-mappings.
-" " <CR>: close popup and save indent.
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-"   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-"   " For no inserting <CR> key.
-"   "return pumvisible() ? "\<C-y>" : "\<CR>"
-" endfunction
-" " <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" " Close popup by <Space>.
-" inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" " AutoComplPop like behavior.
-" let g:neocomplete#enable_auto_select = 1
-
-" " Shell like behavior(not recommended).
-" "set completeopt+=longest
-" "let g:neocomplete#enable_auto_select = 1
-" "let g:neocomplete#disable_auto_complete = 1
-" "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" " Enable omni completion.
-" " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-
-" " Enable heavy omni completion.
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"   let g:neocomplete#sources#omni#input_patterns = {}
-" endif
-" let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-" "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" " For perlomni.vim setting.
-" " https://github.com/c9s/perlomni.vim
-" " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-
-" " snippet
-" " Plugin key-mappings.
-" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" " SuperTab like snippets behavior.
-" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" "imap <expr><TAB>
-" " \ pumvisible() ? "\<C-n>" :
-" " \ neosnippet#expandable_or_jumpable() ?
-" " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" " For conceal markers.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=niv
-" endif
-
-" 语法检查
-" let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-"let g:syntastic_php_checkers = ['php']
-" let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-nnoremap <leader>ln :lne<CR>
-nnoremap <leader>lp :lp<CR>
-
-" Don't run messdetector on save (default = 1)
-" let g:phpqa_messdetector_autorun = 0
-
-" Don't run codesniffer on save (default = 1)
-" let g:phpqa_codesniffer_autorun = 0
-" let g:phpqa_codesniffer_args = "--standard=PSR2"
-
-" Show code coverage on load (default = 0)
-" let g:phpqa_codecoverage_autorun = 0
 
 " go 语言配置
 let g:go_disable_autoinstall = 0
@@ -232,12 +99,12 @@ nnoremap <leader>gd :YcmDiags<CR>
 "}}}
 
 " custom map settings ---------------------- {{{
-
-" 关闭自动检测
-silent! nmap <leader>s :SyntasticToggleMode<CR>
-
-" 删除一行
-noremap <leader>d dd
+" Movement in insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>v
+inoremap <C-^> <C-o><C-^>
 
 " 在新窗口编辑VIMRC
 " TODO 添加如果已存在vimrc窗口，切换到该页面
@@ -256,7 +123,7 @@ nnoremap H 0
 nnoremap L $
 
 " 设置切换
-nnoremap <leader>N :setlocal number!<cr>
+nnoremap <S-n> :setlocal number!<cr>
 
 " 复杂的map配置
 " 在当前的单词加上双引号
@@ -264,13 +131,6 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
 " visual-block模式下，在选择的单词上加上双引号
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
-
-" 解放左手
-" inoremap jk <esc>
-" 修改<esc>按键无效
-" inoremap <esc> <nop>
-" 修改方向键无效 TODO
-" noremap 
 
 " tab快速切换配置
 " TODO 需要结合Mac iterm2 配置<option>按键修改为<esc>+使用
@@ -325,18 +185,11 @@ noremap <C-t><C-w> :tabclose<CR>
 " autocmd FileType php nnoremap <buffer> <localleader>c I//<esc>
 " }}}
 
-" statusline settings ---------------------- {{{
-" TODO 现在使用airlineTheme插件美滋滋~
-" 设置状态栏
-" 空格需要反斜线进行转义
-" set statusline=%f\ -\ FileType:\ %y
-" }}}
-
 " Vimscript file settings ---------------------- {{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
+" augroup filetype_vim
+"     autocmd!
+"     autocmd FileType vim setlocal foldmethod=marker
+" augroup END
 " }}}
 
 " Vimscript Complicated map settings --------------------{{{

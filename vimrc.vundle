@@ -1,84 +1,157 @@
-" vundlle.vim 基础配置
-set nocompatible              " 去除VI一致性,必须
-filetype off                  " 必须
+" vundlle.vim 
+set nocompatible            
+filetype off            
 
-" 设置包括vundle和初始化相关的runtime path
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" 另一种选择, 指定一个vundle安装插件的路径
-"call vundle#begin('~/some/path/here')
-
-" 让vundle管理插件版本,必须
 Plugin 'VundleVim/Vundle.vim'
 
-" 以下范例用来支持不同格式的插件安装.
-" 请将安装插件的命令放在vundle#begin和vundle#end之间.
-" Github上的插件
-" 格式为 Plugin '用户名/插件仓库名'
-" Plugin 'tpope/vim-fugitive'
-" 来自 http://vim-scripts.org/vim/scripts.html 的插件
-" Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
-" Plugin 'L9'
-" 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
-" Plugin 'git://git.wincent.com/command-t.git'
-" 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" 插件在仓库的子目录中.
-" 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-" Plugin 'git@github.com:fengyuwei01/potion-for-vimscript.git', {'name': 'potion'}
-
-" 快速添加注释
-Plugin 'scrooloose/nerdcommenter'
-" 好看的状态栏主题
+" theme
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" 好用的文件查找插件
-Plugin 'ctrlpvim/ctrlp.vim'
-" 好看的主题
 " Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-" 查看文件列表插件
+
+" comment
+Plugin 'scrooloose/nerdcommenter'
+
+" useful search plugin!
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" directory tree
 Plugin 'scrooloose/nerdtree'
-" 自动补全
-"Plugin 'Shougo/neocomplete.vim'
-" tab键
-" Plugin 'ervandew/supertab'
 
-" 代码片断
-"Plugin 'Shougo/neosnippet.vim'
-"Plugin 'Shougo/neosnippet-snippets' 
-
-" 语法检查
-" Plugin 'vim-syntastic/syntastic'
-" php代码
-" Plugin 'joonty/vim-phpqa'
-
-" go 配置
+" go 
 Plugin 'fatih/vim-go'
 
-" 大名鼎鼎的YCM
+" YCM
 Plugin 'Valloric/YouCompleteMe'
 
 " template
-" TODO
-" Plugin 'fengzi01/vim-common'
-"Plugin 'fengzi01/vim-template'
 Plugin 'fengzi01/smart-template.vim'
+" TODO Plugin 'fengzi01/vim-common'
 
-" 你的所有插件需要在下面这行之前
-call vundle#end()            " 必须
-filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
-" 忽视插件改变缩进,可以使用以下替代:
+" awesome bookmark
+Plugin 'MattesGroeger/vim-bookmarks'
+" maximizer window 
+Plugin 'szw/vim-maximizer'
+" algin with = or :
+Plugin 'godlygeek/tabular'
+" markdown 
+Plugin 'tpope/vim-markdown'
+" close other buffer
+Plugin 'vim-scripts/BufOnly.vim'
+" snippet
+Plugin 'SirVer/ultisnips'
+
+call vundle#end()            
+filetype plugin indent on  
 "filetype plugin on
 "
-" 简要帮助文档
 " :PluginList       - 列出所有已配置的插件
 " :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
 " :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
 " :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
 "
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
-" 将你自己对非插件片段放在这行之后
+
+" plugin settings ---------------------- {{{
+
+" scrooloose/nerdtree
+nnoremap <leader>t :NERDTreeToggle<cr>
+let NERDTreeHighlightCursorline=1 
+let NERDTreeQuitOnOpen=1
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+" ctrlpvim/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {  
+  \ 'dir':  '\v[\/]\.(git|hg|svn|output)$',  
+  \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
+  \ 'link': 'some_bad_symbolic_links',  
+  \ }
+
+" vim-airline
+" let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" go 
+let g:go_disable_autoinstall = 0
+
+" ----------------------------------------------------------------------------
+"  " vim-bookmarks
+"  "TODO
+"  ----------------------------------------------------------------------------
+let g:bookmark_auto_save = 1
+nnoremap mm :BookmarkToggle<CR>
+nnoremap mi :BookmarkAnnotate<CR>
+nnoremap ma :BookmarkShowAll<CR>
+nnoremap mn :BookmarkNext<CR>
+nnoremap mp :BookmarkPrev<CR>
+nnoremap mc :BookmarkClear<CR>
+nnoremap mx :BookmarkClearAll<CR>
+
+" ----------------------------------------------------------------------------
+" tabular
+" ----------------------------------------------------------------------------
+nmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a" :Tabularize /"<CR>
+
+" ----------------------------------------------------------------------------
+"  " vim-maximizer                                                       
+"  "
+"  ----------------------------------------------------------------------------
+nnoremap <tab> :MaximizerToggle<CR>
+
+" ----------------------------------------------------------------------------
+" BufOnly.vim
+" ----------------------------------------------------------------------------
+nnoremap <silent> qo :BufOnly<CR>
+
+" ----------------------------------------------------------------------------
+" ultisnips
+" ----------------------------------------------------------------------------
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" YouComleteMe
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_complete_in_strings = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_semantic_triggers =  {
+            \   'c' : ['->', '.'],
+            \   'objc' : ['->', '.'],
+            \   'ocaml' : ['.', '#'],
+            \   'cpp,objcpp' : ['->', '.', '::'],
+            \   'perl' : ['->'],
+            \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
+            \   'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
+            \   'html': ['<', '"', '</', ' '],
+            \   'vim' : ['re![_a-za-z]+[_\w]*\.'],
+            \   'ruby' : ['.', '::'],
+            \   'lua' : ['.', ':'],
+            \   'erlang' : [':'],
+            \   'haskell' : ['.', 're!.'],
+            \   'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
+            \ }
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmDiags<CR>
+
+"}}}
+

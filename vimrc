@@ -1,4 +1,11 @@
 " basic settings ---------------------- {{{
+
+" 设置用户配置信息
+let g:user_name = "fengyuwei"
+let g:user_email = "fengyuwei@baidu.com"
+let g:user_company = "Baidu Inc."
+let g:user_deparment = "Tieba"
+"
 " 好像大家都这么写
 set nocompatible
 
@@ -38,11 +45,13 @@ set shiftwidth=4
 " }}}
 
 " vundle basic settings -----------------------{{{
-source ~/.vim/vimrc.vundle
+if filereadable(expand("~/.vim/vimrc.vundle")) 
+    source ~/.vim/vimrc.vundle
+endif
 "}}}
 
 " custome function settings -----------------------{{{
-if filereadable("~/.vim/vim.custom") 
+if filereadable(expand("~/.vim/vimrc.custom")) 
     source ~/.vim/vimrc.custom
 endif
 "}}}
@@ -66,8 +75,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " 主题设置
-" colorscheme solarized
-" let g:solarized_termcolors=256
 
 set background=dark
 colorscheme molokai 
@@ -123,14 +130,7 @@ nnoremap H 0
 nnoremap L $
 
 " 设置切换
-nnoremap <S-n> :setlocal number!<cr>
-
-" 复杂的map配置
-" 在当前的单词加上双引号
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-
-" visual-block模式下，在选择的单词上加上双引号
-vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
+nnoremap <leader>n :setlocal number!<cr>
 
 " tab快速切换配置
 " TODO 需要结合Mac iterm2 配置<option>按键修改为<esc>+使用
@@ -177,14 +177,6 @@ noremap <C-t><C-w> :tabclose<CR>
 
 " }}}
 
-" autocmd settings ---------------------- {{{
-" TODO 暂时没用
-" autocmd 自动加载
-" autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
-" 没有用是啥问题
-" autocmd FileType php nnoremap <buffer> <localleader>c I//<esc>
-" }}}
-
 " Vimscript file settings ---------------------- {{{
 " augroup filetype_vim
 "     autocmd!
@@ -194,7 +186,13 @@ noremap <C-t><C-w> :tabclose<CR>
 
 " Vimscript Complicated map settings --------------------{{{
 " nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-" noremap <leader>cn :cnext<cr>
+
+" 复杂的map配置
+" 在当前的单词加上双引号
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+" visual-block模式下，在选择的单词上加上双引号
+vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
 " }}}
 
 " vim: set ts=4 sw=4 tw=78 et :

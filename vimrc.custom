@@ -7,5 +7,28 @@ function! AppendModeline()
   let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
   call append(line("$"), l:modeline)
 endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+nnoremap <silent> <Leader>m :call AppendModeline()<CR>
+
+augroup make_autocmd
+    autocmd Filetype javascript setlocal makeprg=jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -conf\ /etc/jsl.conf\ -process\ %
+    autocmd FileType json setlocal makeprg=
+    autocmd FileType php
+                \ setlocal makeprg=php\ -l\ -n\ -d\ html_errors=off\ % |
+                \ setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+    autocmd BufWritePost * call <SID>Make()
+    " auto close quickfix if it is the last window
+    autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix" | quit | endif
+augroup END
+
+function! <SID>Make()
+    if &modified | silent write | endif
+    if &makeprg == 'make' | return | endif
+    let regname = '"~'
+    let old_pos = getpos('.')
+    silent make
+    execute 'cw'
+    if !has('gui_running') | redraw! | end
+    call setpos('.', old_pos)
+endfunction
+
 " vim: set ts=4 sw=4 tw=78 et :

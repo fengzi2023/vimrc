@@ -38,3 +38,4 @@ ln -sf $VIMRC_HOME/vimrc $HOME/.vimrc
 # TODO 编译ycm插件
 
 printf "install success,enjoy :)\n"
+# vim: set ts=4 sw=4 tw=0 et :

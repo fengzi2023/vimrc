@@ -46,8 +46,11 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'Shougo/neocomplete.vim'
 " tab键
 " Plugin 'ervandew/supertab'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets' 
+
+" 代码片断
+"Plugin 'Shougo/neosnippet.vim'
+"Plugin 'Shougo/neosnippet-snippets' 
+
 " 语法检查
 " Plugin 'vim-syntastic/syntastic'
 " php代码
@@ -55,7 +58,15 @@ Plugin 'Shougo/neosnippet-snippets'
 
 " go 配置
 Plugin 'fatih/vim-go'
+
+" 大名鼎鼎的YCM
 Plugin 'Valloric/YouCompleteMe'
+
+" template
+" TODO
+" Plugin 'fengzi01/vim-common'
+"Plugin 'fengzi01/vim-template'
+Plugin 'fengzi01/smart-template.vim'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须

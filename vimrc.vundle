@@ -42,6 +42,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'vim-scripts/BufOnly.vim'
 " snippet
 Plugin 'SirVer/ultisnips'
+Plugin 'fengzi01/vim-snippets'
 
 call vundle#end()            
 filetype plugin indent on  
@@ -128,20 +129,23 @@ nnoremap <silent> qo :BufOnly<CR>
 " ----------------------------------------------------------------------------
 " ultisnips
 " ----------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<C-l>"
 
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
-let g:UltiSnipsListSnippets="<c-e>"
+" let g:UltiSnipsListSnippets="<c-e>"
 
 let g:UltiSnipsEditSplit="vertical"
 
-let g:UltiSnipsSnippetDirectories  = ['snips']
-let g:UltiSnipsSnippetsDir = '~/.vim/snips'
+" let g:UltiSnipsSnippetDirectories  = ['snips']
+" let g:UltiSnipsSnippetsDir = '~/.vim/snips'
 
 " 进入对应filetype的snippets进行编辑
 map <leader>se :UltiSnipsEdit<CR>
+
+" FIX 
+" :doautocmd FileType
 
 " YouComleteMe
 let g:ycm_use_ultisnips_completer = 1
@@ -156,7 +160,8 @@ let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
 let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
 
-let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_key_list_stop_completion = ['<C-y>']
 
 let g:ycm_semantic_triggers =  {
             \   'c' : ['->', '.'],

@@ -196,5 +196,6 @@ vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
 
 " 进入对应filetype的snippets进行编辑
 map <leader>se :UltiSnipsEdit<CR>
+let g:UltiSnipsExpandTrigger="<C-l>"
 
 " vim: set ts=4 sw=4 tw=78 et :

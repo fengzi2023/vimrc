@@ -29,17 +29,14 @@ set background=dark
 colorscheme molokai 
 " let g:molokai_original = 1
 let g:rehash256 = 1
-" let g:airline_theme='molokai'
-let g:airline_theme='base16_bright'
-
 set laststatus=2
 
 syntax on
 set nu
 
 " highlight current column and line
-set cursorcolumn    
-set cursorline    
+" set cursorcolumn    
+" set cursorline    
 
 " disable mouse
 " set mouse-=a              
@@ -89,12 +86,6 @@ nnoremap <silent> ) g,
 " use ctrl-c to copy to system clipboard
 " vnoremap <C-c> "*y
 
-" better command line editing
-"cnoremap <C-j> <t_kd>
-"cnoremap <C-k> <t_ku>
-"cnoremap <C-a> <Home>
-"cnoremap <C-e> <End>
-
 " Movement in insert mode
 inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
@@ -111,6 +102,8 @@ nnoremap L $
 " Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=7
 
 "no Highlight
 noremap <silent><leader>/ :nohls<CR>
@@ -160,16 +153,15 @@ map <C-t><C-t> :tabnew .<CR>
 " close tab
 map <C-t><C-w> :tabclose<CR>
 
-" 窗口快捷键
 " 设置最小宽度和高度
 set wmw=0         " set the min width of a window to 0 so we can maximize
 set wmh=0         " set the min height of a window to 0 so we can maximize
 
 " 上下左右切换
-noremap <leader>h :wincmd h<CR> 
-noremap <leader>j :wincmd j<CR> 
-noremap <leader>k :wincmd k<CR> 
-noremap <leader>l :wincmd l<CR> 
+noremap <C-h> :wincmd h<CR> 
+noremap <C-j> :wincmd j<CR> 
+noremap <C-k> :wincmd k<CR> 
+noremap <C-l> :wincmd l<CR> 
 
 " Quickly resize windows use +/-
 noremap - <C-W>-
@@ -196,14 +188,13 @@ noremap <C-t><C-w> :tabclose<CR>
 " }}}
 
 " Vimscript Complicated map settings --------------------{{{
-" nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-
-" 复杂的map配置
 " 在当前的单词加上双引号
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-
 " visual-block模式下，在选择的单词上加上双引号
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
 " }}}
+
+" 进入对应filetype的snippets进行编辑
+map <leader>se :UltiSnipsEdit<CR>
 
 " vim: set ts=4 sw=4 tw=78 et :

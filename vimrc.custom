@@ -15,7 +15,7 @@ augroup make_autocmd
     autocmd FileType php
                 \ setlocal makeprg=php\ -l\ -n\ -d\ html_errors=off\ % |
                 \ setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-    autocmd BufWritePost * call <SID>Make()
+    " autocmd BufWritePost * call <SID>Make()
     " auto close quickfix if it is the last window
     autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix" | quit | endif
 augroup END

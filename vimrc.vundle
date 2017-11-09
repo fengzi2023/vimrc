@@ -131,8 +131,11 @@ nnoremap <silent> qo :BufOnly<CR>
 " ----------------------------------------------------------------------------
 let g:UltiSnipsExpandTrigger="<C-l>"
 
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" let g:UltiSnipsJumpForwardTrigger="<Tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+let g:UltiSnipsJumpForwardTrigger="<C-k>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 
 " let g:UltiSnipsListSnippets="<c-e>"
 

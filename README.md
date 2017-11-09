@@ -21,4 +21,5 @@ cd ~/.vim/bundle/YouCompleteMe
 ## Inspired by:
 
  1. [bigvim](https://github.com/ruanyl/bigvim)
+ 2. [k-vim](https://github.com/wklken/k-vim)
 

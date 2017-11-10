@@ -44,6 +44,9 @@ Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'fengzi01/vim-snippets'
 
+"
+Plugin 'majutsushi/tagbar'
+
 call vundle#end()            
 filetype plugin indent on  
 "filetype plugin on
@@ -187,6 +190,11 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gd :YcmDiags<CR>
+
+" tagbar
+nnoremap <leader>t :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_width = 50
 
 "}}}
 

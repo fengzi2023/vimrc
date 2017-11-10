@@ -198,5 +198,6 @@ vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
 map <leader>se :UltiSnipsEdit<CR>
 let g:UltiSnipsExpandTrigger="<C-l>"
 nnoremap <leader>e :NERDTreeToggle<cr>
+nnoremap <leader>t :TagbarToggle<CR>
 
 " vim: set ts=4 sw=4 tw=78 et :

@@ -39,7 +39,7 @@ set nu
 " set cursorline    
 
 " disable mouse
-" set mouse-=a              
+set mouse-=a              
 
 " highlight search
 set hlsearch

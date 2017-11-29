@@ -283,4 +283,34 @@ snip.rv = re.match(r'.*(?=\.)', fn).group()
 }
 endsnippet
 
+## -------------------------- tieba custom ------------------------------
+snippet tbparm "Tieba service param" b
+if (!isset($arrInput['thread_id']) || ${1}) {
+	Bingo_Log::warning('param error. input:['.serialize($arrInput).']');
+	return self::_errRet(Tieba_Errcode::ERR_PARAM_ERROR);
+}
+endsnippet
+snippet tbcal "Tieba service call" b
+${1:$arrRet} = Tieba_Service::call('${2:post}', '${3:mgetThread}', ${4:$arrParam}, null, null, 'post', 'php', 'utf-8');
+endsnippet
+
+snippet tbret "Tieba service ret" b
+if (!${1:$arrRet} || ${1}['errno'] !== Tieba_Errcode::ERR_SUCCESS) {
+	Bingo_Log::warning('${3:call service} input:['.serialize(${4:$arrParam}).'], output:['.serialize(${1}).']');
+	return self::_errRet(Tieba_Errcode::${5:ERR_PARRAM});
+}
+endsnippet
+
+snippet tbfun "tieba service function definition" b
+/**
+ * ${2:函数名}  
+ * @param
+ * @return 
+ */
+public static function ${1:function_name}($arrInput) {
+	${0:${VISUAL}}
+	return self::_errRet(Tieba_Errcode::ERR_SUCCESS);
+}
+endsnippet
+
 # :vim:ft=snippets:

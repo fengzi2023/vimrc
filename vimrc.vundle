@@ -71,8 +71,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'BCLOUD']  
 let g:ctrlp_custom_ignore = {  
-  \ 'dir':  '\v[\/]\.(git|hg|svn|output)$',  
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|output)$',  
   \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
   \ 'link': 'some_bad_symbolic_links',  
   \ }
@@ -114,9 +115,20 @@ nnoremap mx :BookmarkClearAll<CR>
 " ----------------------------------------------------------------------------
 " tabular
 " ----------------------------------------------------------------------------
-nmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a" :Tabularize /"<CR>
+if exists(":Tabularize")
+  nnoremap <Leader>a= :Tabularize /=<CR>
+  vnoremap <Leader>a= :Tabularize /=<CR>
+
+  nnoremap <Leader>a: :Tabularize /:\zs<CR>
+  vnoremap <Leader>a: :Tabularize /:\zs<CR>
+
+  nnoremap <Leader>a=> :Tabularize /=><CR>
+  vnoremap <Leader>a=> :Tabularize /=><CR>
+endif
+
+"nmap <Leader>=> :Tabularize /=><CR>
+"nmap <Leader>a: :Tabularize /:<CR>
+"nmap <Leader>a" :Tabularize /"<CR>
 
 " ----------------------------------------------------------------------------
 "  " vim-maximizer                                                       
@@ -155,6 +167,7 @@ map <leader>se :UltiSnipsEdit<CR>
 
 " YouComleteMe
 let g:ycm_use_ultisnips_completer = 1
+let g:ycm_confirm_extra_conf=0 
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_key_list_stop_completion = ['<CR>']

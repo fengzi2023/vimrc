@@ -75,6 +75,7 @@ set backspace=eol,start,indent
 " edit VIMRC in new window
 " TODO 添加如果已存在vimrc窗口，切换到该页面
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ep :vsplit ~/.vim/vimrc.vundle<cr>
 " source VIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr> 
 " TODO 提交VIMRC

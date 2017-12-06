@@ -207,8 +207,27 @@ let g:ycm_semantic_triggers =  {
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <F4> :YcmDiags<CR>
+nnoremap ff :YcmCompleter FixIt<CR>
 
+" nnoremap <F4> :YcmDiags<CR>
+
+" 自动切换YcmDiags
+" 参考 https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
+function! s:YcmDiagsToggle() abort 
+    let l:buffer_count_before = len(filter(range(1, bufnr('$')),'buflisted(v:val)'))
+
+    silent! lclose
+    silent! lclose
+    
+    if len(filter(range(1, bufnr('$')),'buflisted(v:val)')) == l:buffer_count_before
+        execute "silent! YcmDiags"
+    endif 
+endfunction
+
+command! YcmDiagsToggle call s:YcmDiagsToggle()
+noremap <F4> :YcmDiagsToggle<CR>
+
+" ctag 工具
 " tagbar
 nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1

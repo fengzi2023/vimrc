@@ -32,20 +32,27 @@ Plugin 'fengzi01/smart-template.vim'
 
 " awesome bookmark
 Plugin 'MattesGroeger/vim-bookmarks'
+
 " maximizer window 
 Plugin 'szw/vim-maximizer'
+
 " algin with = or :
 Plugin 'godlygeek/tabular'
+
 " markdown 
-Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-markdown'
+
 " close other buffer
-Plugin 'vim-scripts/BufOnly.vim'
+" Plugin 'vim-scripts/BufOnly.vim'
+
 " snippet
 Plugin 'SirVer/ultisnips'
 Plugin 'fengzi01/vim-snippets'
 
 "
 Plugin 'majutsushi/tagbar'
+
+Plugin 'dyng/ctrlsf.vim'
 
 call vundle#end()            
 filetype plugin indent on  
@@ -68,15 +75,6 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
-" ctrlpvim/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'BCLOUD']  
-let g:ctrlp_custom_ignore = {  
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|output)$',  
-  \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
-  \ 'link': 'some_bad_symbolic_links',  
-  \ }
 
 " vim-airline
 " let g:airline_powerline_fonts = 1
@@ -139,7 +137,7 @@ nnoremap <tab> :MaximizerToggle<CR>
 " ----------------------------------------------------------------------------
 " BufOnly.vim
 " ----------------------------------------------------------------------------
-nnoremap <silent> qo :BufOnly<CR>
+"nnoremap <silent> qo :BufOnly<CR>
 
 " ----------------------------------------------------------------------------
 " ultisnips
@@ -177,7 +175,8 @@ let g:ycm_key_list_stop_completion = ['<CR>']
 let g:ycm_key_list_select_completion = ['<Tab>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
 
-let g:ycm_error_symbol = '>>'
+let g:ycm_error_symbol = '>!'
+" let g:ycm_warning_symbol = '>*'
 let g:ycm_warning_symbol = '>*'
 
 let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
@@ -206,7 +205,7 @@ let g:ycm_semantic_triggers =  {
 
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F6> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap ff :YcmCompleter FixIt<CR>
 
 " nnoremap <F4> :YcmDiags<CR>
@@ -232,6 +231,39 @@ noremap <F4> :YcmDiagsToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_width = 50
+
+" ctrlpvim/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'BCLOUD']  
+let g:ctrlp_custom_ignore = {  
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|output)$',  
+  \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
+  \ 'link': 'some_bad_symbolic_links',  
+  \ }
+
+" ctrlsf
+let g:ctrlsf_ackprg = 'ag'
+let g:ctrlsf_default_view_mode = 'compact'
+
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_winsize = '30%'
+
+let g:ctrlsf_ignore_dir = ["output",".git",".svn"]
+
+let g:ctrlsf_mapping = {
+            \ "split": "H",
+            \ "vsplit": "V",
+            \ }
+
+nmap     <C-f> <Plug>CtrlSFPrompt
+"vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-f> <Plug>CtrlSFVwordExec
+"nmap     <C-F>n <Plug>CtrlSFCwordPath
+"nmap     <C-F>p <Plug>CtrlSFPwordPath
+"nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-t> :CtrlSFToggle<CR>
+"inoremap <C-t> <Esc>:CtrlSFToggle<CR>
 
 "}}}
 

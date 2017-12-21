@@ -230,7 +230,7 @@ noremap <F4> :YcmDiagsToggle<CR>
 " tagbar
 nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
-let g:tagbar_width = 50
+let g:tagbar_width = 30
 
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
@@ -243,7 +243,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " ctrlsf
-let g:ctrlsf_ackprg = 'ag'
+let g:ctrlsf_ackprg = 'rg'
 let g:ctrlsf_default_view_mode = 'compact'
 
 "let g:ctrlsf_position = 'bottom'
@@ -262,7 +262,8 @@ vmap     <C-f> <Plug>CtrlSFVwordExec
 "nmap     <C-F>n <Plug>CtrlSFCwordPath
 "nmap     <C-F>p <Plug>CtrlSFPwordPath
 "nnoremap <C-F>o :CtrlSFOpen<CR>
-nnoremap <C-t> :CtrlSFToggle<CR>
+"nnoremap <C-t> :CtrlSFToggle<CR>
+nnoremap <C-o> :CtrlSFOpen<CR>
 "inoremap <C-t> <Esc>:CtrlSFToggle<CR>
 
 "}}}

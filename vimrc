@@ -8,28 +8,15 @@ let g:user_deparment = "Tieba"
 
 set nocompatible
 
+" leader key
+let mapleader = ";"
+let localmapleader = "\\"
+
 " vundle basic settings -----------------------{{{
 if filereadable(expand("~/.vim/vimrc.vundle")) 
     source ~/.vim/vimrc.vundle
 endif
 "}}}
-
-" custome function settings -----------------------{{{
-if filereadable(expand("~/.vim/vimrc.custom")) 
-    source ~/.vim/vimrc.custom
-endif
-"}}}
-
-" leader key
-let mapleader = ";"
-let localmapleader = "\\"
-
-" theme
-set background=dark
-colorscheme molokai 
-" let g:molokai_original = 1
-let g:rehash256 = 1
-set laststatus=2
 
 syntax on
 set nu
@@ -87,13 +74,6 @@ nnoremap <silent> ) g,
 " use ctrl-c to copy to system clipboard
 " vnoremap <C-c> "*y
 
-" Movement in insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>v
-inoremap <C-^> <C-o><C-^>
-
 " quick save
 nnoremap ;w :w<cr>
 
@@ -117,8 +97,8 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
 "Use 'm/M' to move among buffers
-noremap m :bn<CR>
-noremap M :bp<CR>
+"noremap m :bn<CR>
+"noremap M :bp<CR>
 " toggle between two buffers
 nnoremap t <C-^>
 
@@ -133,6 +113,12 @@ nnoremap U <C-r>
 inoremap <C-o> <Esc>o
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
+" Movement in insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>v
+inoremap <C-^> <C-o><C-^>
 
 " 设置切换
 nnoremap <leader>n :setlocal number!<cr>
@@ -174,11 +160,6 @@ noremap < <C-W><
 nnoremap <S-q> :wincmd w<CR>
 nnoremap <S-e> :wincmd W<CR>
 
-" new tab
-noremap <C-t><C-t> :tabnew .<CR>
-" close tab
-noremap <C-t><C-w> :tabclose<CR> 
-
 " }}}
 
 " Vimscript file settings ---------------------- {{{
@@ -194,6 +175,14 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 " visual-block模式下，在选择的单词上加上双引号
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>`<<c-v>`>l
 " }}}
+ 
+" ===================== 插件设置 =========================
+
+" custome function settings -----------------------{{{
+if filereadable(expand("~/.vim/vimrc.custom")) 
+    source ~/.vim/vimrc.custom
+endif
+"}}}
 
 " 进入对应filetype的snippets进行编辑
 map <leader>se :UltiSnipsEdit<CR>

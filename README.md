@@ -2,7 +2,7 @@
 My vimrc
 
 ## PRE-INSTALL
-1. pipgrep [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep/tree/master)
+1. ripgrep [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep/tree/master)
 
 ## INSTALL
 ```

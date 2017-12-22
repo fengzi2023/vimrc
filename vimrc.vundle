@@ -257,8 +257,8 @@ let g:ctrlsf_mapping = {
             \ }
 
 nmap     <C-f> <Plug>CtrlSFPrompt
-"vmap     <C-F>f <Plug>CtrlSFVwordPath
-vmap     <C-f> <Plug>CtrlSFVwordExec
+vmap     <C-f> <Plug>CtrlSFVwordPath
+"vmap     <C-f> <Plug>CtrlSFVwordExec
 "nmap     <C-F>n <Plug>CtrlSFCwordPath
 "nmap     <C-F>p <Plug>CtrlSFPwordPath
 "nnoremap <C-F>o :CtrlSFOpen<CR>

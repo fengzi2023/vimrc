@@ -54,6 +54,8 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'dyng/ctrlsf.vim'
 
+Plugin 'terryma/vim-multiple-cursors'
+
 call vundle#end()            
 filetype plugin indent on  
 "filetype plugin on
@@ -75,6 +77,13 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
+
+" theme
+set background=dark
+colorscheme molokai 
+" let g:molokai_original = 1
+let g:rehash256 = 1
+set laststatus=2
 
 " vim-airline
 " let g:airline_powerline_fonts = 1
@@ -114,8 +123,8 @@ nnoremap mx :BookmarkClearAll<CR>
 " tabular
 " ----------------------------------------------------------------------------
 if exists(":Tabularize")
-  nnoremap <Leader>a= :Tabularize /=<CR>
-  vnoremap <Leader>a= :Tabularize /=<CR>
+  nnoremap <C-a> :Tabularize /=<CR>
+  vnoremap <C-a> :Tabularize /=<CR>
 
   nnoremap <Leader>a: :Tabularize /:\zs<CR>
   vnoremap <Leader>a: :Tabularize /:\zs<CR>
@@ -265,6 +274,13 @@ vmap     <C-f> <Plug>CtrlSFVwordPath
 "nnoremap <C-t> :CtrlSFToggle<CR>
 nnoremap <C-o> :CtrlSFOpen<CR>
 "inoremap <C-t> <Esc>:CtrlSFToggle<CR>
+
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_next_key='<C-j>'
+let g:multi_cursor_prev_key='<C-k>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
 "}}}
 

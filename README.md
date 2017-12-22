@@ -1,6 +1,9 @@
 # vimrc
 My vimrc
 
+## PRE-INSTALL
+1. ripgrep [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep/tree/master)
+
 ## INSTALL
 ```
 curl https://raw.githubusercontent.com/fengzi01/vimrc/master/install.sh -L > install.sh && sh install.sh
@@ -22,4 +25,5 @@ cd ~/.vim/bundle/YouCompleteMe
 
  1. [bigvim](https://github.com/ruanyl/bigvim)
  2. [k-vim](https://github.com/wklken/k-vim)
+
 

@@ -53,7 +53,12 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'dyng/ctrlsf.vim'
 
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
+
+" ================ Python =====================
+Plugin 'klen/python-mode'
+Plugin 'hynek/vim-python-pep8-indent'
+" ================ Python end ===================
 
 call vundle#end()            
 filetype plugin indent on  
@@ -212,6 +217,7 @@ let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
 let g:ycm_error_symbol = '>!'
 " let g:ycm_warning_symbol = '>*'
 let g:ycm_warning_symbol = '>*'
+let g:ycm_enable_diagnostic_highlighting = 0
 
 let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
 let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
@@ -300,12 +306,28 @@ vmap     <C-f> <Plug>CtrlSFVwordPath
 nnoremap <C-o> :CtrlSFOpen<CR>
 "inoremap <C-t> <Esc>:CtrlSFToggle<CR>
 
-let g:multi_cursor_use_default_mapping=0
+" =============== multi_cursor ===============
+"let g:multi_cursor_use_default_mapping=0
 " Default mapping
-let g:multi_cursor_next_key='<C-j>'
-let g:multi_cursor_prev_key='<C-k>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+"let g:multi_cursor_next_key='<C-j>'
+"let g:multi_cursor_prev_key='<C-k>'
+"let g:multi_cursor_skip_key='<C-x>'
+"let g:multi_cursor_quit_key='<Esc>'
+" ============================================
+"
+" ================Python mode==================
+" folding
+set foldlevelstart=99
+nnoremap <Space> za
+nnoremap <S-Space> zA
+vnoremap <S-Space> zA
+let g:pymode_lint_write = 0
+let g:pymode_rope_vim_completion = 0
+
+let g:pymode_rope_lookup_project = 0
+
+let g:pymode_folding = 0
+" =============================================
 
 "}}}
 

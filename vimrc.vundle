@@ -25,6 +25,7 @@ Plugin 'fatih/vim-go'
 
 " YCM
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/a.vim'
 
 " template
 Plugin 'fengzi01/smart-template.vim'
@@ -278,34 +279,33 @@ let g:ctrlp_custom_ignore = {
 
 " ctrlsf
 let g:ctrlsf_ackprg = 'rg'
-let g:ctrlsf_default_view_mode = 'compact'
-
+"let g:ctrlsf_default_view_mode = 'compact'
 "let g:ctrlsf_position = 'bottom'
 "let g:ctrlsf_winsize = '30%'
-
 let g:ctrlsf_ignore_dir = ["output",".git",".svn"]
-
 let g:ctrlsf_mapping = {
             \ "split": "H",
             \ "vsplit": "V",
             \ }
-
 nmap     <C-f> <Plug>CtrlSFPrompt
 vmap     <C-f> <Plug>CtrlSFVwordPath
 "vmap     <C-f> <Plug>CtrlSFVwordExec
 "nmap     <C-F>n <Plug>CtrlSFCwordPath
-"nmap     <C-F>p <Plug>CtrlSFPwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
 "nnoremap <C-F>o :CtrlSFOpen<CR>
 "nnoremap <C-t> :CtrlSFToggle<CR>
 nnoremap <C-o> :CtrlSFOpen<CR>
 "inoremap <C-t> <Esc>:CtrlSFToggle<CR>
 
-let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_use_default_mapping = 0
 " Default mapping
-let g:multi_cursor_next_key='<C-j>'
-let g:multi_cursor_prev_key='<C-k>'
+let g:multi_cursor_next_key='<C-h>'
+let g:multi_cursor_prev_key='<C-l>'
 let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_quit_key='<esc>'
+
+" a.vim
+nnoremap <C-a> :A<CR>
 
 "}}}
 

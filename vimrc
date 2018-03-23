@@ -56,6 +56,10 @@ set wildignore=**.o,*~,.swp,*.bak,*.pyc,*.class " Ignore compiled files
 
 " set backspace=eol,start,indent
 set backspace=eol,start,indent
+
+set noundofile
+"set nobackup
+"set noswapfile
 " }}}
 
 " custom map settings ---------------------- {{{
@@ -145,10 +149,10 @@ set wmw=0         " set the min width of a window to 0 so we can maximize
 set wmh=0         " set the min height of a window to 0 so we can maximize
 
 " 上下左右切换
-noremap <C-h> :wincmd h<CR> 
-noremap <C-j> :wincmd j<CR> 
-noremap <C-k> :wincmd k<CR> 
-noremap <C-l> :wincmd l<CR> 
+"noremap <C-h> :wincmd h<CR> 
+"noremap <C-j> :wincmd j<CR> 
+"noremap <C-k> :wincmd k<CR> 
+"noremap <C-l> :wincmd l<CR> 
 
 " Quickly resize windows use +/-
 noremap - <C-W>-
@@ -189,5 +193,16 @@ map <leader>se :UltiSnipsEdit<CR>
 let g:UltiSnipsExpandTrigger="<C-l>"
 nnoremap <leader>e :NERDTreeToggle<cr>
 nnoremap <leader>t :TagbarToggle<CR>
+
+" Python
+au BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4|set shiftwidth=4|set textwidth=79|set expandtab|set autoindent|set fileformat=unix
+
+" =============== multi_cursor ===============
+let g:multi_cursor_use_default_mapping = 0
+" Default mapping
+let g:multi_cursor_next_key='<C-h>'
+let g:multi_cursor_prev_key='<C-l>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<esc>'
 
 " vim: set ts=4 sw=4 tw=78 et :

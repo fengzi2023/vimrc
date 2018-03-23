@@ -54,7 +54,7 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'dyng/ctrlsf.vim'
 
-"Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 
 " ================ Python =====================
 Plugin 'klen/python-mode'
@@ -317,13 +317,6 @@ let g:pymode_rope_lookup_project = 0
 let g:pymode_folding = 0
 " =============================================
 
-" =============== multi_cursor ===============
-let g:multi_cursor_use_default_mapping = 0
-" Default mapping
-let g:multi_cursor_next_key='<C-h>'
-let g:multi_cursor_prev_key='<C-l>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<esc>'
 
 " a.vim
 nnoremap <C-a> :A<CR>

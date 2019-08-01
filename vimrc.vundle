@@ -1,77 +1,37 @@
 set nocompatible            
 filetype off            
 
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-" theme
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-
-" comment
-Plugin 'scrooloose/nerdcommenter'
-
-" useful search plugin!
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" directory tree
-Plugin 'scrooloose/nerdtree'
-
-" go 
-Plugin 'fatih/vim-go'
-
-" YCM
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/a.vim'
-
-" template
-Plugin 'fengzi01/smart-template.vim'
-" TODO Plugin 'fengzi01/vim-common'
-
-" awesome bookmark
-Plugin 'MattesGroeger/vim-bookmarks'
-
-" maximizer window 
-Plugin 'szw/vim-maximizer'
-
-" markdown 
-"Plugin 'tpope/vim-markdown'
-
-" close other buffer
-" Plugin 'vim-scripts/BufOnly.vim'
-
-" snippet
-Plugin 'SirVer/ultisnips'
-Plugin 'fengzi01/vim-snippets'
-
-" algin with = or :
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-
-Plugin 'dyng/ctrlsf.vim'
-
-Plugin 'terryma/vim-multiple-cursors'
-
-" ================ Python =====================
-Plugin 'klen/python-mode'
-Plugin 'hynek/vim-python-pep8-indent'
-" ================ Python end ===================
-
-call vundle#end()            
-filetype plugin indent on  
-"filetype plugin on
-"
 " :PluginList       - 列出所有已配置的插件
 " :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
 " :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
 " :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
 "
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tomasr/molokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/a.vim'
+" go 
+" Plugin 'fatih/vim-go'
+Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'szw/vim-maximizer'
+" 自动对齐
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()            
+filetype plugin indent on  
 
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'tomasr/molokai'
 " theme
 set background=dark
 colorscheme molokai 
@@ -79,10 +39,10 @@ colorscheme molokai
 let g:rehash256 = 1
 set laststatus=2
 
-" vim-airline
-"let g:airline_powerline_fonts = 1
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+" let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_bright'
-
 " 关闭状态显示空白符号计数,这个对我用处不大"
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
@@ -94,7 +54,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
 " unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
@@ -114,9 +73,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
-
-let g:airline#extensions#ycm#enabled = 1
-
 " 显示完整路径
 function! GetFilePath() 
 	let l:file_path = substitute(expand('%:p'),$HOME,"~","g")
@@ -124,9 +80,25 @@ function! GetFilePath()
 endfunction
 let g:airline_section_c = '%{GetFilePath()}'
 
-" plugin settings ---------------------- {{{
+let g:airline#extensions#ycm#enabled = 1
 
-" scrooloose/nerdtree
+" 注释
+" Plugin 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims=1
+
+" 超有用的搜索文件插件
+" Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'BCLOUD', 'Pipfile','.gitignore']  
+let g:ctrlp_custom_ignore = {  
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|output)$',  
+  \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
+  \ 'link': 'some_bad_symbolic_links',  
+  \ }
+
+" directory tree
+" Plugin 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let NERDTreeHighlightCursorline=1 
 let NERDTreeQuitOnOpen=1
@@ -135,12 +107,14 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
 " go 
-let g:go_disable_autoinstall = 0
+" Plugin 'fatih/vim-go'
+" let g:go_disable_autoinstall = 0
 
-" ----------------------------------------------------------------------------
-"  " vim-bookmarks
-"  "TODO
-"  ----------------------------------------------------------------------------
+" Plugin 'vim-scripts/a.vim'
+nnoremap <C-a> :A<CR>
+
+" awesome bookmark
+"Plugin 'MattesGroeger/vim-bookmarks'
 let g:bookmark_auto_save = 1
 nnoremap mm :BookmarkToggle<CR>
 nnoremap mi :BookmarkAnnotate<CR>
@@ -150,9 +124,12 @@ nnoremap mp :BookmarkPrev<CR>
 nnoremap mc :BookmarkClear<CR>
 nnoremap mx :BookmarkClearAll<CR>
 
-" ----------------------------------------------------------------------------
-" tabular
-" ----------------------------------------------------------------------------
+" maximizer window 
+" Plugin 'szw/vim-maximizer'
+nnoremap <tab> :MaximizerToggle<CR>
+
+" 自动对齐工具
+" Plugin 'godlygeek/tabular'
 if exists(":Tabularize")
   nnoremap <C-a> :Tabularize /=<CR>
   vnoremap <C-a> :Tabularize /=<CR>
@@ -164,45 +141,40 @@ if exists(":Tabularize")
   vnoremap <Leader>a=> :Tabularize /=><CR>
 endif
 
-"nmap <Leader>=> :Tabularize /=><CR>
-"nmap <Leader>a: :Tabularize /:<CR>
-"nmap <Leader>a" :Tabularize /"<CR>
+" Plugin 'majutsushi/tagbar'
+nnoremap <leader>t :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_width = 30
 
-" ----------------------------------------------------------------------------
-"  " vim-maximizer                                                       
-"  "
-"  ----------------------------------------------------------------------------
-nnoremap <tab> :MaximizerToggle<CR>
+" Plugin 'dyng/ctrlsf.vim'
+let g:ctrlsf_ackprg = 'rg'
+"let g:ctrlsf_default_view_mode = 'compact'
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_winsize = '30%'
+let g:ctrlsf_ignore_dir = ["output",".git",".svn"]
+let g:ctrlsf_mapping = {
+            \ "split": "H",
+            \ "vsplit": "V",
+            \ }
+nmap     <C-f> <Plug>CtrlSFPrompt
+vmap     <C-f> <Plug>CtrlSFVwordPath
+"vmap     <C-f> <Plug>CtrlSFVwordExec
+"nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+"nnoremap <C-F>o :CtrlSFOpen<CR>
+"nnoremap <C-t> :CtrlSFToggle<CR>
+nnoremap <C-o> :CtrlSFOpen<CR>
+"inoremap <C-t> <Esc>:CtrlSFToggle<CR>
 
-" ----------------------------------------------------------------------------
-" BufOnly.vim
-" ----------------------------------------------------------------------------
-"nnoremap <silent> qo :BufOnly<CR>
+" Plugin 'terryma/vim-multiple-cursors'
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_next_key='<C-h>'
+let g:multi_cursor_prev_key='<C-l>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<esc>'
 
-" ----------------------------------------------------------------------------
-" ultisnips
-" ----------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<C-l>"
-
-" let g:UltiSnipsJumpForwardTrigger="<Tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-
-let g:UltiSnipsJumpForwardTrigger="<C-k>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
-
-" let g:UltiSnipsListSnippets="<c-e>"
-
-let g:UltiSnipsEditSplit="vertical"
-
-" let g:UltiSnipsSnippetDirectories  = ['snips']
-" let g:UltiSnipsSnippetsDir = '~/.vim/snips'
-
-" 进入对应filetype的snippets进行编辑
-map <leader>se :UltiSnipsEdit<CR>
-
-" FIX 
-" :doautocmd FileType
-
+" YCM
+" Plugin 'Valloric/YouCompleteMe'
 " YouComleteMe
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -267,59 +239,25 @@ endfunction
 command! YcmDiagsToggle call s:YcmDiagsToggle()
 noremap <F4> :YcmDiagsToggle<CR>
 
-" ctag 工具
-" tagbar
-nnoremap <leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_width = 30
+" markdown 
+"Plugin 'tpope/vim-markdown'
 
-" ctrlpvim/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'BCLOUD']  
-let g:ctrlp_custom_ignore = {  
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|output)$',  
-  \ 'file': '\v\.(exe|so|dll|dmg|pdf|word|jpg|gif)$',  
-  \ 'link': 'some_bad_symbolic_links',  
-  \ }
-
-" ctrlsf
-let g:ctrlsf_ackprg = 'rg'
-"let g:ctrlsf_default_view_mode = 'compact'
-"let g:ctrlsf_position = 'bottom'
-"let g:ctrlsf_winsize = '30%'
-let g:ctrlsf_ignore_dir = ["output",".git",".svn"]
-let g:ctrlsf_mapping = {
-            \ "split": "H",
-            \ "vsplit": "V",
-            \ }
-nmap     <C-f> <Plug>CtrlSFPrompt
-vmap     <C-f> <Plug>CtrlSFVwordPath
-"vmap     <C-f> <Plug>CtrlSFVwordExec
-"nmap     <C-F>n <Plug>CtrlSFCwordPath
-nmap     <C-F>p <Plug>CtrlSFPwordPath
-"nnoremap <C-F>o :CtrlSFOpen<CR>
-"nnoremap <C-t> :CtrlSFToggle<CR>
-nnoremap <C-o> :CtrlSFOpen<CR>
-"inoremap <C-t> <Esc>:CtrlSFToggle<CR>
-
-" ================Python mode==================
-" folding
-set foldlevelstart=99
-nnoremap <Space> za
-nnoremap <S-Space> zA
-vnoremap <S-Space> zA
-let g:pymode_lint_write = 0
-let g:pymode_rope_vim_completion = 0
-
-let g:pymode_rope_lookup_project = 0
-
-let g:pymode_folding = 0
-" =============================================
-
-
-" a.vim
-nnoremap <C-a> :A<CR>
-
-"}}}
-
+" snippet
+"'Plugin 'SirVer/ultisnips'
+"Plugin 'fengzi01/vim-snippets'
+" 进入对应filetype的snippets进行编辑
+"map <leader>se :UltiSnipsEdit<CR>
+"let g:UltiSnipsExpandTrigger="<C-l>"
+"nnoremap <leader>e :NERDTreeToggle<cr>
+"nnoremap <leader>t :TagbarToggle<CR>
+"let g:UltiSnipsExpandTrigger="<C-l>"
+"" let g:UltiSnipsJumpForwardTrigger="<Tab>"
+"" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+"let g:UltiSnipsJumpForwardTrigger="<C-k>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+"" let g:UltiSnipsListSnippets="<c-e>"
+"let g:UltiSnipsEditSplit="vertical"
+"" let g:UltiSnipsSnippetDirectories  = ['snips']
+"" let g:UltiSnipsSnippetsDir = '~/.vim/snips'
+"" 进入对应filetype的snippets进行编辑
+"map <leader>se :UltiSnipsEdit<CR>

@@ -2,9 +2,9 @@
 
 " 设置用户配置信息
 let g:user_name = "fengyuwei"
-let g:user_email = "fengyuwei@baidu.com"
-let g:user_company = "Baidu Inc."
-let g:user_deparment = "Tieba"
+let g:user_email = "fengyuwei@zhihu.com"
+let g:user_company = "Zhihu"
+let g:user_deparment = "Zhihu"
 
 set nocompatible
 
@@ -58,11 +58,37 @@ set wildignore=**.o,*~,.swp,*.bak,*.pyc,*.class " Ignore compiled files
 set backspace=eol,start,indent
 
 set noundofile
-"set nobackup
-"set noswapfile
+set nobackup
+set noswapfile
 " }}}
 
 " custom map settings ---------------------- {{{
+
+" 很好用的快速跳转
+nnoremap H 0
+nnoremap L $
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=7
+
+" Speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+" remap U to <C-r> for easier redo
+nnoremap U <C-r>
+
+" 配合 ctrl-p 切换窗口贼快
+nnoremap <S-q> :wincmd w<CR>
+nnoremap <S-e> :wincmd W<CR>
+
+" Quickly resize windows use +/-
+set wmw=0
+set wmh=0
+noremap - <C-W>-
+noremap + <C-W>+
+noremap > <C-W>>
+noremap < <C-W><
+
 " edit VIMRC in new window
 " TODO 添加如果已存在vimrc窗口，切换到该页面
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -80,15 +106,6 @@ nnoremap <silent> ) g,
 
 " quick save
 nnoremap ;w :w<cr>
-
-nnoremap H 0
-nnoremap L $
-
-" Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
-" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
-set scrolloff=7
 
 "no Highlight
 noremap <silent><leader>/ :nohls<CR>
@@ -110,9 +127,6 @@ nnoremap t <C-^>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
-
 " Quick move in insert mode
 inoremap <C-o> <Esc>o
 inoremap <C-a> <Home>
@@ -128,7 +142,11 @@ inoremap <C-^> <C-o><C-^>
 nnoremap <leader>n :setlocal number!<cr>
 
 " tab快速切换配置
-" TODO 需要结合Mac iterm2 配置<option>按键修改为<esc>+使用
+" new tab
+map <C-t><C-t> :tabnew .<CR>
+" close tab
+map <C-t><C-w> :tabclose<CR>
+" 结合Mac iterm2 配置<option>按键修改为<esc>+使用
 noremap <ESC>1 1gt 
 noremap <ESC>2 2gt 
 noremap <ESC>3 3gt 
@@ -138,31 +156,6 @@ noremap <ESC>6 6gt
 noremap <ESC>7 7gt 
 noremap <ESC>8 8gt 
 noremap <ESC>9 9gt 
-
-" new tab
-map <C-t><C-t> :tabnew .<CR>
-" close tab
-map <C-t><C-w> :tabclose<CR>
-
-" 设置最小宽度和高度
-set wmw=0         " set the min width of a window to 0 so we can maximize
-set wmh=0         " set the min height of a window to 0 so we can maximize
-
-" 上下左右切换
-"noremap <C-h> :wincmd h<CR> 
-"noremap <C-j> :wincmd j<CR> 
-"noremap <C-k> :wincmd k<CR> 
-"noremap <C-l> :wincmd l<CR> 
-
-" Quickly resize windows use +/-
-noremap - <C-W>-
-noremap + <C-W>+
-noremap > <C-W>>
-noremap < <C-W><
-
-" Loop to switch windows
-nnoremap <S-q> :wincmd w<CR>
-nnoremap <S-e> :wincmd W<CR>
 
 " }}}
 
@@ -188,21 +181,9 @@ if filereadable(expand("~/.vim/vimrc.custom"))
 endif
 "}}}
 
-" 进入对应filetype的snippets进行编辑
-map <leader>se :UltiSnipsEdit<CR>
-let g:UltiSnipsExpandTrigger="<C-l>"
-nnoremap <leader>e :NERDTreeToggle<cr>
-nnoremap <leader>t :TagbarToggle<CR>
-
 " Python
 au BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4|set shiftwidth=4|set textwidth=79|set expandtab|set autoindent|set fileformat=unix
 
 " =============== multi_cursor ===============
-let g:multi_cursor_use_default_mapping = 0
-" Default mapping
-let g:multi_cursor_next_key='<C-h>'
-let g:multi_cursor_prev_key='<C-l>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<esc>'
 
 " vim: set ts=4 sw=4 tw=78 et :

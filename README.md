@@ -16,10 +16,10 @@ cd ~/.vim/bundle/YouCompleteMe
 ./install.py --go-completer --clang-completer
 ```
 
-## TODO 
-
- - YCM compile
-
+## INSTALL YCM
+ - cd bundle/YouCompleteMe/
+ - git submodule update --init --recursive
+ - ./install.py --clang-completer --java-completer --go-completer
 
 ## Inspired by:
 
